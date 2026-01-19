@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> | Hack Demo</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #000;
+            font-family: "Courier New", monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #00ff66;
+        }
+        
+        .terminal {
+            width: 740px;
+            padding: 25px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 2px solid #00ff66;
+            box-shadow: 0 0 35px #00ff66;
+            text-align: center;
+        }
+        /* TITLE */
+        
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            color: #00ff66;
+            text-shadow: 0 0 10px #00ff66, 0 0 25px #00ff66, 0 0 40px #00ff66;
+        }
+        /* WARNINGS */
+        
+        .top-warning,
+        .bottom-warning {
+            display: none;
+            color: red;
+            font-weight: bold;
+            text-shadow: 0 0 12px red;
+            animation: flicker .15s infinite;
+        }
+        
+        .top-warning {
+            margin-bottom: 15px;
+        }
+        
+        .bottom-warning {
+            margin-top: 20px;
+        }
+        
+        @keyframes flicker {
+            0% {
+                opacity: 1
+            }
+            50% {
+                opacity: .3
+            }
+            100% {
+                opacity: 1
+            }
+        }
+        /* BUTTONS */
+        
+        .buttons {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        button {
+            padding: 12px 26px;
+            font-size: 16px;
+            font-family: "Courier New", monospace;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+        /* HACK BUTTON */
+        
+        .hack {
+            background: black;
+            color: red;
+            border: 2px solid red;
+            box-shadow: 0 0 15px red;
+        }
+        
+        .hack:hover {
+            background: red;
+            color: black;
+        }
+        /* AI MODE BUTTON */
+        
+        .a1 {
+            background: black;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px #ffd700;
+        }
+        
+        .a1:hover {
+            background: #ffd700;
+            color: black;
+        }
+        /* BINARY */
+        
+        .binary {
+            display: none;
+            margin-top: 15px;
+            height: 200px;
+            overflow: hidden;
+            text-align: left;
+            white-space: pre-wrap;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="terminal">
+
+        <div class="title">PRANAV HACKER</div>
+
+        <!-- TOP WARNING -->
+        <div id="topWarn" class="top-warning">
+            ⚠ HACK SUCCESSFULLY ⚠<br> SYSTEM COMPROMISED (DEMO)
+        </div>
+
+        <div>> SYSTEM ONLINE</div>
+        <div>User : Pranav</div>
+        <div>Status : Waiting</div>
+
+        <div class="buttons">
+            <button class="hack" onclick="hack()">HACK</button>
+            <button class="a1" onclick="aiMode()">A1 / AI MODE</button>
+        </div>
+
+        <div id="binary" class="binary"></div>
+
+        <!-- BOTTOM WARNING -->
+        <div id="bottomWarn" class="bottom-warning">
+            ⚠ HACK SUCCESSFULLY ⚠<br> ALL DATA SIMULATED ACCESS
+        </div>
+
+    </div>
+
+    <script>
+        let interval;
+
+        function aiMode() {
+            const box = document.getElementById("binary");
+            box.style.display = "block";
+            box.textContent = "";
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                let line = "";
+                for (let i = 0; i < 90; i++) {
+                    line += Math.random() > 0.5 ? "1" : "0";
+                }
+                box.textContent += line + "\n";
+                box.scrollTop = box.scrollHeight;
+            }, 40);
+        }
+
+        function hack() {
+            clearInterval(interval);
+            document.getElementById("binary").style.display = "none";
+            document.getElementById("topWarn").style.display = "block";
+            document.getElementById("bottomWarn").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
